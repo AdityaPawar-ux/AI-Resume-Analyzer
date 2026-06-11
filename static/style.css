@@ -1,0 +1,144 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0f172a, #020617);
+    color: #e2e8f0;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: linear-gradient(90deg, #1e3a8a, #2563eb);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+.navbar h2 {
+    color: white;
+}
+
+.navbar a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    color: #60a5fa;
+    transform: translateY(-2px);
+}
+
+/* CONTAINER */
+.container {
+    padding: 30px;
+    text-align: center;
+}
+
+/* CARDS */
+.card {
+    background: #1e293b;
+    padding: 25px;
+    margin: 20px auto;
+    border-radius: 15px;
+    width: 90%;
+    box-shadow: 0 0 25px rgba(37, 99, 235, 0.3);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px) scale(1.02);
+}
+
+/* GRID CARDS (ADMIN) */
+.grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.small-card {
+    width: 250px;
+    text-align: center;
+}
+
+/* TABLE */
+table {
+    width: 95%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th {
+    background: #2563eb;
+    padding: 12px;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid #334155;
+}
+
+tr:hover {
+    background: rgba(255,255,255,0.05);
+}
+
+/* BUTTONS */
+button {
+    background: #2563eb;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #1d4ed8;
+    transform: scale(1.05);
+}
+
+/* PROGRESS BAR */
+.progress {
+    background: #333;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 20px;
+    background: linear-gradient(90deg, #2563eb, #60a5fa);
+    animation: grow 1s ease-in-out;
+}
+
+@keyframes grow {
+    from { width: 0; }
+}
+
+/* ANIMATIONS */
+.fade-in {
+    animation: fade 1s ease-in;
+}
+
+@keyframes fade {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; }
+}
+
+/* CHART CANVAS */
+canvas {
+    margin-top: 20px;
+}

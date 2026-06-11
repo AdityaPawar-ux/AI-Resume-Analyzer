@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analytics</title>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            background: #0f172a;
+            color: white;
+            font-family: Arial;
+            margin: 0;
+        }
+
+        .navbar {
+            background: #1e3a8a;
+            padding: 15px;
+        }
+
+        .navbar a {
+            color: white;
+            margin-right: 15px;
+            text-decoration: none;
+        }
+
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            width: 90%;
+        }
+
+        table {
+            width: 95%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid white;
+            text-align: center;
+        }
+
+        th {
+            background: #2563eb;
+        }
+
+        canvas {
+            max-width: 400px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <a href="/admin">Admin</a>
+    <a href="/analytics">Analytics</a>
+    <a href="/logout">Logout</a>
+</div>
+
+<div class="container">
+
+<h2>📊 Resume Analytics</h2>
+
+<div class="card">
+    <p><b>Total Resumes:</b> {{ total_resumes }}</p>
+    <p><b>Average ATS Score:</b> {{ avg_score }}%</p>
+</div>
+
+<!-- 🔥 PIE CHART -->
+<div class="card">
+    <h3>ATS Score Distribution (Pie Chart)</h3>
+    <canvas id="pieChart"></canvas>
+</div>
+
+<!-- 🔥 BAR GRAPH -->
+<div class="card">
+    <h3>ATS Score Category (Bar Graph)</h3>
+    <canvas id="barChart"></canvas>
+</div>
+
+<!-- TABLE -->
+<div class="card">
+    <h3>All Resume Records</h3>
+    <table>
+        <tr>
+            <th>User</th>
+            <th>Skills</th>
+            <th>ATS Score</th>
+            <th>Date</th>
+        </tr>
+
+        {% for r in all_resumes %}
+        <tr>
+            <td>{{ r[0] }}</td>
+            <td>{{ r[1] }}</td>
+            <td>{{ r[2] }}</td>
+            <td>{{ r[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+</div>
+
+<!-- 🔥 CHART SCRIPT -->
+<script>
+let low = 0;
+let mid = 0;
+let high = 0;
+
+{% for r in all_resumes %}
+    {% if r[2] < 40 %}
+        low++;
+    {% elif r[2] < 70 %}
+        mid++;
+    {% else %}
+        high++;
+    {% endif %}
+{% endfor %}
+
+const dataValues = [low, mid, high];
+
+// PIE CHART
+new Chart(document.getElementById("pieChart"), {
+    type: "pie",
+    data: {
+        labels: ["Low (<40)", "Average (40-70)", "High (70+)"],
+        datasets: [{
+            data: dataValues,
+            backgroundColor: ["red", "orange", "green"]
+        }]
+    }
+});
+
+// BAR GRAPH
+new Chart(document.getElementById("barChart"), {
+    type: "bar",
+    data: {
+        labels: ["Low", "Average", "High"],
+        datasets: [{
+            label: "Number of Resumes",
+            data: dataValues,
+            backgroundColor: ["red", "orange", "green"]
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+
+</body>
+</html>

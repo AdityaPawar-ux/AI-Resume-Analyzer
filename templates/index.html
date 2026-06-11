@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Resume Analyzer</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<!-- 🔥 NAVBAR -->
+<div class="navbar">
+    <h3>AI Resume Analyzer 🚀</h3>
+    <div>
+        <a href="/">Home</a>
+        <a href="/login">Login</a>
+        <a href="/signup">Signup</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+    </div>
+</div>
+
+<!-- 🔥 MAIN CONTENT -->
+<div class="container">
+    <h1>AI Resume Analyzer 🚀</h1>
+    <p>Upload your resume and get ATS score instantly</p>
+
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="resume" required>
+        <br>
+        <button type="submit">Upload Resume</button>
+    </form>
+</div>
+
+</body>
+</html>

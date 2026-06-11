@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Resume Analysis</title>
+
+<style>
+body {
+    background-color: #0f172a;
+    color: white;
+    font-family: Arial;
+    margin: 0;
+}
+
+.navbar {
+    background-color: #1e3a8a;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.container {
+    padding: 30px;
+}
+
+.card {
+    background-color: #1e293b;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.progress {
+    background-color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 20px;
+    background: linear-gradient(90deg, #2563eb, #60a5fa);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <h2>AI Resume Analyzer</h2>
+    <div>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/upload">Upload</a>
+        <a href="/logout">Logout</a>
+    </div>
+</div>
+
+<div class="container">
+
+<div class="card">
+    <h2>Resume Analysis ✅</h2>
+</div>
+
+<div class="card">
+    <h3>Skills</h3>
+    <p>{{ skills }}</p>
+</div>
+
+<div class="card">
+    <h3>ATS Score</h3>
+
+    <div class="progress">
+        <div class="progress-bar" style="width: {{ ats_score|int }}%"></div>
+    </div>
+
+    <p>{{ ats_score }}%</p>
+
+    {% if ats_score < 40 %}
+        <p style="color:red;">Poor Resume ❌</p>
+    {% elif ats_score < 70 %}
+        <p style="color:orange;">Average Resume ⚠️</p>
+    {% else %}
+        <p style="color:lightgreen;">Excellent Resume ✅</p>
+    {% endif %}
+</div>
+
+<div class="card">
+    <h3>Basic Feedback</h3>
+    <p>{{ feedback }}</p>
+</div>
+
+<div class="card">
+    <h3>AI Feedback</h3>
+    <p>{{ ai_feedback|safe }}</p>
+</div>
+
+<div class="card">
+    <h3>Recommended Jobs 💼</h3>
+    <p>{{ jobs }}</p>
+</div>
+
+<div class="card">
+    <h3>Download Report 📄</h3>
+    <a href="{{ pdf_path }}" download>
+        <button>Download PDF</button>
+    </a>
+</div>
+
+</div>
+
+</body>
+</html>

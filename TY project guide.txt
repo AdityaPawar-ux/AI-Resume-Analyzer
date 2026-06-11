@@ -1,0 +1,10 @@
+                                                                                                                                     Ai RESUME ANALYSER 
+INSTALL PYTHON LIBRARIES
+
+pip install flask
+pip install mysql-connector-python
+pip install PyPDF2
+pip install docx2txt
+pip install nltk
+pip install spacy
+pip install requests

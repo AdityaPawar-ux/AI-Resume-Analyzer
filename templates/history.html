@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>History</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="navbar">
+    <h3>Resume History</h3>
+    <a href="/dashboard">Back</a>
+</div>
+
+<table>
+<tr>
+<th>Skills</th>
+<th>ATS Score</th>
+<th>Date</th>
+</tr>
+
+{% for row in data %}
+<tr>
+<td>{{ row[0] }}</td>
+<td>{{ row[1] }}%</td>
+<td>{{ row[2] }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</body>
+</html>
