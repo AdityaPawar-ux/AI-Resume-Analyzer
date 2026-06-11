@@ -1,0 +1,173 @@
+Got you 👍 — clean **TXT format** ready to paste in Notepad / README file 👇
+
+---
+
+AI RESUME ANALYZER – SETUP GUIDE
+
+---
+
+1. SOFTWARE REQUIREMENTS
+
+---
+
+* Python (version 3.8 or above)
+* MySQL Server
+* MySQL Workbench (optional but recommended)
+* VS Code / Any Code Editor
+* Git (for GitHub upload)
+
+---
+
+2. INSTALL PYTHON LIBRARIES
+
+---
+
+Open terminal / command prompt and run:
+
+pip install flask
+pip install mysql-connector-python
+pip install PyPDF2
+pip install docx2txt
+pip install reportlab
+
+---
+
+3. PROJECT FOLDER STRUCTURE
+
+---
+
+AI-Resume-Analyzer/
+│
+├── app.py
+├── static/
+│   ├── style.css
+│   └── report.pdf
+│
+├── templates/
+│   ├── login.html
+│   ├── signup.html
+│   ├── dashboard.html
+│   ├── upload.html
+│   ├── result.html
+│   ├── admin.html
+│   └── analytics.html
+│
+├── uploads/
+│   (resume files stored here)
+
+---
+
+4. DATABASE SETUP (MYSQL)
+
+---
+
+Step 1: Open MySQL
+
+Step 2: Run these queries:
+
+CREATE DATABASE resume_analyzer;
+
+USE resume_analyzer;
+
+CREATE TABLE users (
+id INT AUTO_INCREMENT PRIMARY KEY,
+username VARCHAR(100),
+password VARCHAR(100),
+role VARCHAR(20)
+);
+
+CREATE TABLE resumes (
+id INT AUTO_INCREMENT PRIMARY KEY,
+username VARCHAR(100),
+skills TEXT,
+ats_score INT,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+---
+
+5. UPDATE DATABASE CONNECTION
+
+---
+
+Open app.py and set:
+
+db = mysql.connector.connect(
+host="localhost",
+user="root",
+password="",   # your mysql password
+database="resume_analyzer"
+)
+
+---
+
+6. RUN PROJECT
+
+---
+
+In terminal:
+
+python app.py
+
+Then open browser:
+
+[http://127.0.0.1:5000/](http://127.0.0.1:5000/)
+
+---
+
+7. LOGIN DETAILS
+
+---
+
+Create user via signup page
+
+For admin:
+Manually update role in database:
+
+UPDATE users SET role='admin' WHERE username='your_username';
+
+---
+
+8. FEATURES INCLUDED
+
+---
+
+* User Signup/Login
+* Resume Upload (PDF/DOCX)
+* Skill Extraction
+* ATS Score Calculation
+* AI Feedback (Rule-based)
+* PDF Report Generation
+* Admin Panel
+* Resume Analytics (Pie Chart + Bar Graph)
+* User Management
+
+---
+
+9. OPTIONAL (FOR BETTER UI)
+
+---
+
+You can add:
+
+* Chart.js (for graphs)
+* Animations using CSS
+* Bootstrap for styling
+
+---
+
+10. GITHUB UPLOAD STEPS
+
+---
+
+git init
+git add .
+git commit -m "Initial Commit - AI Resume Analyzer"
+git branch -M main
+git remote add origin <your_repo_link>
+git push -u origin main
+
+---
+
+DONE ✅
+Project is ready to run and upload 🚀
